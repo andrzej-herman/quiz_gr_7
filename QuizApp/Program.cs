@@ -1,10 +1,34 @@
 ﻿using QuizApp.backend;
 using QuizApp.frontend;
-using System.ComponentModel;
+
 var game = new Game();
 game.CreateQuestions();
 Display.DisplayWelcome();
-var question = game.DrawQuestion();
+game.DrawQuestion();
+var userNumber = Display.DisplayQuestion(game.CurrentQuestion);
+var ifUserAnsweredCorrect = game.IsCorrectAnswer(userNumber);
+
+if (ifUserAnsweredCorrect)
+{
+    Console.WriteLine("HURRA !!!");
+}
+else
+{
+    Console.WriteLine("GAME OVER !!!");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Console.ReadLine();
