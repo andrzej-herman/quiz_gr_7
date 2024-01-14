@@ -2,20 +2,31 @@
 using QuizApp.frontend;
 
 var game = new Game();
-game.CreateQuestions();
 Display.DisplayWelcome();
-game.DrawQuestion();
-var userNumber = Display.DisplayQuestion(game.CurrentQuestion);
-var ifUserAnsweredCorrect = game.IsCorrectAnswer(userNumber);
-
-if (ifUserAnsweredCorrect)
+while(true)
 {
-    Console.WriteLine("HURRA !!!");
+    game.DrawQuestion();
+    var userNumber = Display.DisplayQuestion(game.CurrentQuestion);
+    var ifUserAnsweredCorrect = game.IsCorrectAnswer(userNumber);
+
+    if (ifUserAnsweredCorrect)
+    {
+        if (game.IsLastQuestion())
+        {
+            Display.SuccessText(game.PlayerPoints);
+            break;
+        }
+        else
+        {
+            Display.GoodAnswerText(game.CurrentQuestion.Category);
+        }
+    }
+    else
+    {
+        Display.GameOverText();
+        break;
+    }
 }
-else
-{
-    Console.WriteLine("GAME OVER !!!");
-}
 
 
 
@@ -31,4 +42,6 @@ else
 
 
 
-Console.ReadLine();
+
+
+

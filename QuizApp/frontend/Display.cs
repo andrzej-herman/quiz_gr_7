@@ -31,7 +31,7 @@ namespace QuizApp.frontend
 
             foreach (var answer in question.Answers)
             {
-                Console.WriteLine($" {answer.Id}. {answer.Content}");
+                Console.WriteLine($" {answer.DisplayOrder}. {answer.Content}");
             }
 
             Console.WriteLine();
@@ -40,6 +40,50 @@ namespace QuizApp.frontend
 
             return int.Parse(Console.ReadLine());
         }
+
+
+        public static void GameOverText()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine();
+            Console.WriteLine(" Niestety, to nie jest poprawna odpowiedź.");
+            Console.WriteLine();
+            Console.WriteLine(" KONIEC GRY");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+        }
+
+        public static void GoodAnswerText(int points)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();
+            Console.WriteLine(" Brawo, to jest poprawna odpowiedź !!!");
+            Console.WriteLine();
+            Console.WriteLine($" Za to pytanie zdobyłeś/aś {points} pkt.");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+            Console.Write(" Naciśnij ENTER, aby zobaczyć następne pytanie ... ");
+            Console.ReadKey();
+        }
+
+
+        public static void SuccessText(int points)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();
+            Console.WriteLine(" Brawo, ukonczyłeś/aś cały Quiz !!!");
+            Console.WriteLine();
+            Console.WriteLine($" Łącznie zdobyłeś/aś {points} pkt. Gratulacje !!!");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+            Console.ReadLine();
+
+        }
+
+
 
     }
 }
